@@ -1,5 +1,5 @@
 import { SearchIcon } from '@chakra-ui/icons';
-import { Box, Container, HStack, Input, InputGroup, InputRightElement, Spacer } from '@chakra-ui/react';
+import { Box, Container, HStack, Input, InputGroup, InputRightElement, Spacer, TagLabel } from '@chakra-ui/react';
 import React from 'react';
 
 const Header: React.FC = () => {
@@ -15,7 +15,7 @@ const Header: React.FC = () => {
 					</InputGroup>
 				</Box>
 				<Spacer />
-				<Box>판매하기 | 내상점 | 쿠렁톡</Box>
+				<Box>홈 | 로그인 | 쿠렁톡</Box>
 			</HStack>
 		</Container>
 	);
