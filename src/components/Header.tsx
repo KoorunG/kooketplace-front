@@ -1,12 +1,15 @@
 import { SearchIcon } from '@chakra-ui/icons';
-import { Box, Container, HStack, Input, InputGroup, InputRightElement, Spacer, TagLabel } from '@chakra-ui/react';
+import { Box, Button, Container, HStack, Input, InputGroup, InputRightElement, Link, Spacer } from '@chakra-ui/react';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Header: React.FC = () => {
 	return (
 		<Container maxW="container.lg" height={150}>
 			<HStack mt={10}>
-				<Box>번개장터</Box>
+				<Link as={NavLink} to="/">
+					<Box>Kooketplace</Box>
+				</Link>
 				<Spacer />
 				<Box>
 					<InputGroup>
@@ -15,7 +18,23 @@ const Header: React.FC = () => {
 					</InputGroup>
 				</Box>
 				<Spacer />
-				<Box>홈 | 로그인 | 쿠렁톡</Box>
+				<Box>
+					<Link as={NavLink} to="/login" ml={1} mr={1}>
+						로그인
+					</Link>
+					|
+					<Link as={NavLink} to="/products/new" ml={1} mr={1}>
+						판매하기
+					</Link>
+					|
+					<Link as={NavLink} to="/" ml={1} mr={1}>
+						내상점
+					</Link>
+					|
+					<Link as={NavLink} to="/" ml={1} mr={1}>
+						쿠렁톡
+					</Link>
+				</Box>
 			</HStack>
 		</Container>
 	);

@@ -1,26 +1,26 @@
-import { Button, Container, Grid, Spacer } from '@chakra-ui/react';
-import axios from 'axios';
+import { AspectRatio, Box, Button, Container, Grid, Image } from '@chakra-ui/react';
+import axios, { AxiosRequestConfig } from 'axios';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import Item from '../components/Item';
 
 const Main: React.FC = () => {
-	const navigate = useNavigate();
-	const toSub = () => {
-		navigate('/sub');
-	};
-
 	const sendReq = () => {
-		axios.get('http://localhost:8080/user');
+		const jwtToken = localStorage.getItem('Authorization');
+		const config: AxiosRequestConfig = { headers: { Authorization: jwtToken } };
+
+		console.log(config);
+
+		axios.get('http://localhost:8080/user/test', config);
 	};
 
 	return (
 		<Container maxW="container.lg">
-			메인
-			<Button mb={30} onClick={toSub}>
-				서브창으로
-			</Button>
-			<Button onClick={sendReq}>요청보내기</Button>
+			<Box mb={5}>
+				<Button onClick={sendReq}>요청보내기</Button>
+			</Box>
+			<AspectRatio maxW="container.lg" ratio={10 / 3} mb="10px">
+				<Image src="https://media.bunjang.co.kr/images/nocrop/907207228_w2058.jpg" alt="naruto" objectFit="cover" />
+			</AspectRatio>
 			<Grid templateColumns="repeat(4, 1fr)" gap={5}>
 				<Item />
 				<Item />
@@ -32,5 +32,4 @@ const Main: React.FC = () => {
 		</Container>
 	);
 };
-
 export default Main;

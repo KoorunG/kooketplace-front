@@ -1,15 +1,17 @@
+import { ChakraProvider } from '@chakra-ui/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
-import Footer from './components/Footer';
-import Header from './components/Header';
 import MainRouter from './MainRouter';
+
+const queryClient = new QueryClient();
 
 const App: React.FC = () => {
 	return (
-		<>
-			<Header />
-			<MainRouter />
-			<Footer />
-		</>
+		<QueryClientProvider client={queryClient}>
+			<ChakraProvider>
+				<MainRouter />
+			</ChakraProvider>
+		</QueryClientProvider>
 	);
 };
 
